@@ -29,6 +29,7 @@ router.post(
   videoUpload.single('video'),
   async (req, res) => {
     const file = req.file;
+    console.log(req);
     const result = await uploadFile(file);
     await unlinkFile(file.path);
     res.send({ result });
@@ -46,7 +47,7 @@ router.post(
     const fileHash = await imageUploadIpfs(file);
     const JSONfile = JSON.stringify({
       image: fileHash,
-      video: req.body.videoData,
+      video: req.body.video,
     });
     const metadataHash = await metadataUploadIpfs(JSONfile);
     await unlinkFile(file.path);
