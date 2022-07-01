@@ -19,6 +19,5 @@ export const imageUploadIpfs = async (fileToUpload) => {
 export const metadataUploadIpfs = async (file) => {
   const metadataAdded = await client.add(file);
   const metadataHash = metadataAdded.cid.toString();
-  console.log(metadataHash);
   return metadataHash;
 };

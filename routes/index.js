@@ -46,7 +46,7 @@ router.post(
     const fileHash = await imageUploadIpfs(file);
     const JSONfile = JSON.stringify({
       image: fileHash,
-      video: req.body.video,
+      video: req.body.videoData,
     });
     const metadataHash = await metadataUploadIpfs(JSONfile);
     await unlinkFile(file.path);
