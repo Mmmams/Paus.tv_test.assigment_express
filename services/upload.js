@@ -14,7 +14,7 @@ const videoStorage = multer.diskStorage({
 export const videoUpload = multer({
   storage: videoStorage,
   limits: {
-    fileSize: 10000000, // 10000000 Bytes = 10 MB
+    fileSize: 100000000000000, // 10000000 Bytes = 10 MB
   },
   fileFilter(req, file, cb) {
     // upload only mp4 and mkv format
@@ -39,5 +39,12 @@ export const imageUpload = multer({
   storage: imageStorage,
   limits: {
     fileSize: 10000000, // 10000000 Bytes = 10 MB
+  },
+  fileFilter(req, file, cb) {
+    // upload only mp4 and mkv format
+    if (!file.originalname.match(/\.(png|jpg|jpeg)$/)) {
+      return cb(new Error('Please upload an image'));
+    }
+    cb(undefined, true);
   },
 });
