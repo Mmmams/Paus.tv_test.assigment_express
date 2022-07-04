@@ -7,11 +7,11 @@ import cors from 'cors';
 
 import router from './routes/index.js';
 
-var app = express();
+const app = express();
 
 app.use(cors());
 app.options('*', cors());
-const port = 3000;
+const port = process.env.PORT || 5000;
 // view engine setup
 app.set('views', join('views'));
 app.set('view engine', 'pug');
