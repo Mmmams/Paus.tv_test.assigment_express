@@ -22,7 +22,6 @@ router.get('/watch/:key', function (req, res, next) {
 router.post('/uploadVideo', videoUpload.single('video'), async (req, res) => {
   try {
     const file = req.file;
-    console.log('FILE', file);
     const result = await uploadFile(file);
     await unlinkFile(file.path);
     res.send({ result });
